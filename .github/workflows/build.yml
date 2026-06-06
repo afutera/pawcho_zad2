@@ -57,7 +57,7 @@ jobs:
           cache-from: |
             type=registry,ref=ghcr.io/${{ github.actor }}/pawcho_zad2_cache  
           cache-to: |
-            type=registry,mode=max,ref=${{ github.actor }}/pawcho_zad2_cache:${{steps.meta.outputs.tags}}
+            type=registry,mode=max,ref=${{ github.actor }}/pawcho_zad2_cache:${{github.sha}}
           tags: ${{ steps.meta.outputs.tags }}
           ssh: default
           outputs: type=image,name=${{ vars.github.actor }}/pawcho_zad2
