@@ -58,6 +58,7 @@ jobs:
             type=registry,ref=ghcr.io/${{ github.actor }}/pawcho_zad2_cache  
           tags: ${{ steps.meta.outputs.tags }}
           ssh: default
+          output: type=image,name=${{ vars.github.actor }}/pawcho_zad2
 
       - 
         name: Run Trivy vulnerability scanner
