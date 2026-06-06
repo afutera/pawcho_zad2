@@ -56,6 +56,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
           cache-from: |
             type=registry,ref=ghcr.io/${{ github.actor }}/pawcho_zad2_cache  
+          cache-to: |
+            type=registry,mode=max,ref=${{ github.actor }}/pawcho_zad2_cache:${{steps.meta.outputs.tags}}
           tags: ${{ steps.meta.outputs.tags }}
           ssh: default
           outputs: type=image,name=${{ vars.github.actor }}/pawcho_zad2
@@ -67,6 +69,7 @@ jobs:
           image-ref: '${{ vars.github.actor }}/pawcho_zad2'
           exit-code: '1'
           #ignore-unfixed: true
+          cache: 'false'
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
 
@@ -78,8 +81,6 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          cache-to: |
-            type=registry,mode=max,ref=${{ github.actor }}/pawcho_zad2_cache:${{steps.meta.outputs.tags}}
           tags: ${{ steps.meta.outputs.tags }}
           ssh: default
 
