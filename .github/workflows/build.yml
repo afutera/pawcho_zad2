@@ -64,7 +64,6 @@ jobs:
         with:
           builder: ${{ steps.buildertest.outputs.name }}
           context: .
-          platforms: linux/amd64,linux/arm64
           cache-from: |
             type=registry,ref=ghcr.io/${{ github.actor }}/pawcho_zad2_cache  
           ssh: default
