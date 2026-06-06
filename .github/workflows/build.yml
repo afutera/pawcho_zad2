@@ -62,6 +62,9 @@ jobs:
           ssh: default
           outputs: type=image,name=pawcho_zad2:test
 
+      -   name: Build image without pushing for testing
+          run: docker image ls
+
       - 
         name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@v0.36.0
