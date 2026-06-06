@@ -40,9 +40,6 @@ jobs:
         with:
           driver: docker
 
-      - name: ls for testing
-        run: docker buildx ls
-
       - 
         name: Login to ghcr
         uses: docker/login-action@v4
@@ -69,20 +66,15 @@ jobs:
           ssh: default
           outputs: type=image,name=pawcho_zad2:test
 
-      -   name: ls for testing
-          run: docker image ls
-
       - 
         name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: 'pawcho_zad2:test'
           exit-code: '1'
-          #ignore-unfixed: true
           cache: 'false'
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-
       - 
         name: Build and push the tested image again (from internal cache)
         uses: docker/build-push-action@v7
