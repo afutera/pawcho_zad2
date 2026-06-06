@@ -67,8 +67,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           cache-from: |
             type=registry,ref=ghcr.io/${{ github.actor }}/pawcho_zad2_cache  
-          cache-to: |
-            type=registry,mode=max,ref=ghcr.io/${{ github.actor }}/pawcho_zad2_cache:${{github.sha}}
           ssh: default
           outputs: type=image,name=pawcho_zad2:test
 
@@ -91,6 +89,8 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           builder: ${{ steps.builderglowny.outputs.name }}
+          cache-to: |
+            type=registry,mode=max,ref=ghcr.io/${{ github.actor }}/pawcho_zad2_cache:${{github.sha}}
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
