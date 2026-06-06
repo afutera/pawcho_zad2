@@ -60,13 +60,13 @@ jobs:
             type=registry,mode=max,ref=ghcr.io/${{ github.actor }}/pawcho_zad2_cache:${{github.sha}}
           tags: ${{ steps.meta.outputs.tags }}
           ssh: default
-          outputs: type=image,name=${{ vars.github.actor }}/pawcho_zad2
+          outputs: type=image,name=pawcho_zad2
 
       - 
         name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: '${{ vars.github.actor }}/pawcho_zad2'
+          image-ref: 'pawcho_zad2'
           exit-code: '1'
           #ignore-unfixed: true
           cache: 'false'
