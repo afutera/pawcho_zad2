@@ -46,7 +46,7 @@ jobs:
         uses: MrSquaare/ssh-setup-action@v4
         with:
           host: github.com
-          private-key: ${{ secrets.GH_TOKEN }}
+          private-key: ${{ secrets.GH_SSHKEY }}
 
       - 
         name: Build image without pushing for testing
